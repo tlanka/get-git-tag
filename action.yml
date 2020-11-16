@@ -1,12 +1,19 @@
-name: 'Get tag name'
+name: 'Get git tag'
 description: 'Gets current tag name and puts it into an environment variable GIT_TAG_NAME.'
-author: 'Oleg Tarasov'
+author: 'Little Core Labs'
 runs:
   using: 'node12'
-  main: 'lib/main.js'
+  main: 'dist/index.js'
+inputs:
+  tagRegex:
+    description: 'Regex to capture a group text as tag name. Full tag string is returned if regex is not defined.'
+    default: ''
+  tagRegexGroup:
+    description: 'Regex group number to return as tag name.'
+    default: '1'
 outputs:
   tag:
     description: The tag name.
 branding:
   icon: 'tag'
-  color: 'orange'
+  color: 'green'

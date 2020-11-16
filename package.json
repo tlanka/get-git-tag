@@ -1,34 +1,34 @@
 {
-  "name": "node12-template-action",
-  "version": "0.0.0",
+  "name": "get-git-tag",
+  "version": "2.0.0",
   "private": true,
-  "description": "Node 12 template action",
-  "main": "lib/main.js",
+  "description": "Get the current git tag",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "test": "standard",
+    "release": "git push --follow-tags && gh-release -y",
+    "version": "npm run build && auto-changelog -p --template keepachangelog auto-changelog --breaking-pattern 'BREAKING CHANGE:' && git add CHANGELOG.md dist",
+    "build": "rm -rf dist && ncc build index.js -o dist -s"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-template.git"
+    "url": "git+https://github.com/little-core-labs/get-git-tag.git"
   },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
-  "author": "GitHub",
+  "author": "Bret Comnes <bcomnes@gmail.com> (https://bret.io/)",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.0.0",
-    "@actions/github": "^1.0.0"
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "@types/node": "^12.0.4",
-    "jest": "^24.8.0",
-    "jest-circus": "^24.7.1",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.1"
+    "@vercel/ncc": "^0.25.1",
+    "auto-changelog": "^2.2.0",
+    "gh-release": "^4.0.3",
+    "standard": "^16.0.2"
+  },
+  "standard": {
+    "ignore": [
+      "dist"
+    ]
   }
 }
