@@ -12,7 +12,7 @@ Dead simple:
 
 ```yaml
     steps:
-      - uses: little-core-labs/get-git-tag@v3
+      - uses: little-core-labs/get-git-tag@v3.0.1
         id: tagName
         with:
           tagRegex: "foobar-(.*)"  # Optional. Returns specified group text as tag name. Full tag string is returned if regex is not defined.
